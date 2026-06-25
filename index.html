@@ -6,7 +6,7 @@
 <title>Advocad — Join the waitlist</title>
 <meta name="description" content="Advocad auto-records your dev-advocacy — talks, videos, posts, podcasts — and measures your reach in one dashboard. Join the waitlist for early access.">
 <meta property="og:title" content="Advocad — see all your dev-advocacy reach in one place">
-<meta property="og:description" content="Auto-record your talks, videos, posts & podcasts and measure your reach. Join the waitlist for early access + a 14-day Premium trial.">
+<meta property="og:description" content="Auto-record your talks, videos, posts & podcasts and measure your reach. Join the waitlist for early access.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://saniyusuf.github.io/advocad-waitlist/og.png">
 <meta property="og:url" content="https://saniyusuf.github.io/advocad-waitlist/">
@@ -62,12 +62,12 @@
   .demo-cap b{color:var(--o600)}
 
   .logo{height:28px;margin-bottom:18px}.logo svg{height:100%;width:auto}
-  .right h1{font-size:31px;font-weight:900;letter-spacing:-.022em;line-height:1.1;margin:0 0 10px}.right h1 .hl{color:var(--o600)}
-  .sub{color:var(--g600);font-size:15px;line-height:1.55;margin:0 0 22px}.sub strong{color:var(--g900);font-weight:700}
-  form{display:flex;flex-direction:column;gap:10px}
-  input[type=email]{padding:15px 17px;border-radius:14px;border:1.5px solid #ece3e0;font-size:15.5px;font-family:inherit;color:var(--g900);outline:none;transition:.15s}
-  input[type=email]:focus{border-color:var(--o500);box-shadow:0 0 0 3px rgba(236,103,53,.18)}
-  button.cta{padding:16px 22px;border:0;border-radius:14px;cursor:pointer;font-family:inherit;font-size:16px;font-weight:800;color:#fff;background:linear-gradient(90deg,var(--o600),var(--o500));box-shadow:0 12px 26px -8px rgba(255,69,0,.6);transition:.15s}
+  .right h1{font-size:40px;font-weight:900;letter-spacing:-.024em;line-height:1.05;margin:2px 0 12px}.right h1 .hl{color:var(--o600)}
+  .sub{color:var(--g600);font-size:16px;line-height:1.55;margin:0 0 26px}.sub strong{color:var(--g900);font-weight:700}
+  form{display:flex;flex-direction:column;gap:12px}
+  input[type=email]{padding:19px 20px;border-radius:16px;border:1.5px solid #ece3e0;font-size:17px;font-family:inherit;color:var(--g900);outline:none;transition:.15s}
+  input[type=email]:focus{border-color:var(--o500);box-shadow:0 0 0 4px rgba(236,103,53,.18)}
+  button.cta{padding:21px 24px;border:0;border-radius:16px;cursor:pointer;font-family:inherit;font-size:19px;font-weight:900;letter-spacing:-.01em;color:#fff;background:linear-gradient(90deg,var(--o600),var(--o500));box-shadow:0 16px 34px -10px rgba(255,69,0,.7);transition:.15s}
   button.cta:hover{filter:brightness(1.05)}button.cta:disabled{opacity:.65;cursor:default}
   .note{color:var(--g400);font-size:12.5px;margin:14px 0 0}
   .ok{display:none;padding:26px 18px;border-radius:18px;text-align:center;background:linear-gradient(180deg,#f4fbf6,#fff);border:1px solid #cdeed6}
@@ -103,7 +103,7 @@
       <input type="email" name="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email address">
       <button type="submit" class="cta">Join the waitlist</button>
     </form>
-    <p class="note">Early access + a 14-day Premium trial. No spam, ever.</p>
+    <p class="note">You're joining the waitlist — we'll email you the moment early access opens. No spam, ever.</p>
     <div class="ok" id="ok"><div class="big">🎉 You're on the list!</div><p>Thanks — we'll email you the moment Advocad opens up.</p></div>
     <div class="by">Works with YouTube · X · Medium · dev.to · TikTok · Twitch · Meetup · podcasts.<br>Built by <a href="https://x.com/saniyusuf">@saniyusuf</a>.</div>
   </div>
@@ -112,6 +112,7 @@
 <script>
   // Set this to your deployed crawler API to show REAL reach instead of "unlock on join".
   const API_BASE = '';
+  const REAL = !!API_BASE;
 
   const SEEDS = [
     {label:'▶ YouTube', cat:'Video', color:'#FF4500', title:'6 Apps One Code With Angular', reach:13186, ph:'▶', img:'https://i.ytimg.com/vi/imaTBx4jbwY/maxresdefault.jpg'},
@@ -153,7 +154,7 @@
 
   function render(){
     // dashboard
-    const known = cards.every(c=>c.reach!=null);
+    const known = REAL || cards.every(c=>c.reach!=null);
     const total = cards.reduce((s,c)=>s+(c.reach||0),0);
     const cats=[...new Set(cards.map(c=>c.cat))];
     const byCat={}; cards.forEach(c=>byCat[c.cat]=(byCat[c.cat]||0)+(known?(c.reach||0):1));
@@ -175,7 +176,7 @@
         <div class="tc-accent"></div>
         <div class="tc-art"><span class="ph">${c.ph||'🔗'}</span>${c.img?`<img src="${c.img}" onerror="this.remove()" alt="">`:''}<span class="tc-src">${esc(c.label)}</span></div>
         <div class="tc-body"><span class="tc-type">${esc(c.cat)}</span><h4>${esc(c.title)}</h4>
-          ${c.reach!=null?`<div class="tc-reach">${fmt(c.reach)}<span>reach</span></div>`:`<div class="tc-reach lock">🔒 reach</div>`}
+          ${c.reach!=null?`<div class="tc-reach">${fmt(c.reach)}<span>reach</span></div>`:`<div class="tc-reach lock">${REAL?'— private':'🔒 reach'}</div>`}
         </div>
       </article>`).join('');
   }
@@ -200,7 +201,7 @@
       document.getElementById('cap').innerHTML='✨ 5 added — <b>join the waitlist</b> to track unlimited activities and measure their real reach.';
       document.querySelector('.right input[type=email]').focus();
     } else if(started){
-      document.getElementById('cap').innerHTML=`Nice — ${ownCount} of ${LIMIT} added. <b>Join the waitlist</b> to unlock real reach numbers.`;
+      document.getElementById('cap').innerHTML=`Nice — ${ownCount} of ${LIMIT} added. <b>Join the waitlist</b> ${REAL?'to track unlimited activities.':'to unlock real reach numbers.'}`;
     }
   }
 
