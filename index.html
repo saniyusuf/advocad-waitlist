@@ -24,66 +24,76 @@
     background:radial-gradient(1200px 600px at 50% -10%,var(--o50),transparent 60%),radial-gradient(900px 500px at 110% 110%,#fff1ea,transparent 60%),#fff;
     display:flex;align-items:center;justify-content:center;padding:30px 16px;
   }
-  .wrap{width:100%;max-width:600px}
-  .card{background:#fff;border-radius:28px;box-shadow:0 30px 60px -25px rgba(255,69,0,.22),0 0 0 1px rgba(39,17,17,.05);padding:34px 26px 30px}
-  .logo{height:30px;display:flex;justify-content:center;margin:0 auto 18px}.logo svg{height:100%;width:auto}
-  h1{font-size:27px;line-height:1.12;font-weight:900;letter-spacing:-.02em;margin:0 0 8px;text-align:center}
-  h1 .hl{color:var(--o600)}
-  .sub{color:var(--g600);font-size:14.5px;line-height:1.5;margin:0 auto 20px;max-width:430px;text-align:center}
+  .wrap{width:100%;max-width:980px}
+  .card{
+    background:#fff;border-radius:28px;box-shadow:0 30px 60px -25px rgba(255,69,0,.22),0 0 0 1px rgba(39,17,17,.05);
+    display:grid;grid-template-columns:1fr;overflow:hidden;
+  }
+  .left{padding:30px 28px}
+  .right{padding:30px 28px;background:linear-gradient(180deg,#fffaf7,#fff);display:flex;flex-direction:column;justify-content:center}
+  @media(min-width:880px){
+    .card{grid-template-columns:1.18fr .82fr}
+    .left{padding:38px 34px}
+    .right{padding:38px 36px;border-left:1px solid #f3ebe8}
+  }
 
-  /* ── live demo showcase ── */
-  .demo{margin:0 0 22px}
-  .dash{border-radius:20px;background:linear-gradient(135deg,#fff6f1,#fff);box-shadow:inset 0 0 0 1px var(--o50);padding:15px 16px}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--o600)}
+  .left h2{font-size:21px;font-weight:900;letter-spacing:-.02em;margin:8px 0 16px;line-height:1.15}
+
+  /* ── dashboard ── */
+  .dash{border-radius:18px;background:linear-gradient(135deg,#fff6f1,#fff);box-shadow:inset 0 0 0 1px var(--o50);padding:14px 15px}
   .dash-top{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
   .dash-eyebrow{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,69,0,.7)}
-  .dash-total{font-size:38px;font-weight:900;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(90deg,var(--o600),var(--o500));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .dash-count{text-align:right}.dash-count .n{font-size:22px;font-weight:800;line-height:1}.dash-count .l{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--g400)}
+  .dash-total{font-size:36px;font-weight:900;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(90deg,var(--o600),var(--o500));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .dash-count{text-align:right}.dash-count .n{font-size:20px;font-weight:800;line-height:1}.dash-count .l{font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--g400)}
   .bar{display:flex;height:9px;border-radius:99px;overflow:hidden;background:#f0e8e5;margin-top:12px}
   .bar span{width:0;transition:width 1.1s cubic-bezier(.4,0,.2,1)}
-  .legend{display:flex;flex-wrap:wrap;gap:5px 14px;margin-top:11px}
+  .legend{display:flex;flex-wrap:wrap;gap:5px 13px;margin-top:11px}
   .legend span{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--g600)}
   .legend i{width:8px;height:8px;border-radius:99px;display:inline-block}
   .legend b{color:var(--g400);font-weight:500}
 
   .cards{display:flex;gap:11px;overflow-x:auto;padding:14px 2px 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .cards::-webkit-scrollbar{display:none}
-  .tc{flex:0 0 156px;border-radius:16px;background:#fff;box-shadow:0 12px 26px -16px rgba(39,17,17,.5),0 0 0 1px rgba(39,17,17,.05);overflow:hidden;opacity:0;transform:translateY(12px) scale(.95);transition:opacity .45s,transform .45s cubic-bezier(.34,1.56,.64,1)}
+  .tc{flex:0 0 150px;border-radius:16px;background:#fff;box-shadow:0 12px 26px -16px rgba(39,17,17,.5),0 0 0 1px rgba(39,17,17,.05);overflow:hidden;opacity:0;transform:translateY(12px) scale(.95);transition:opacity .45s,transform .45s cubic-bezier(.34,1.56,.64,1)}
   .tc.in{opacity:1;transform:none}
   .tc-accent{height:5px;background:var(--c)}
-  .tc-art{position:relative;height:84px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 26%,#fff),color-mix(in srgb,var(--c) 8%,#fff));display:flex;align-items:center;justify-content:center}
+  .tc-art{position:relative;height:80px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 26%,#fff),color-mix(in srgb,var(--c) 8%,#fff));display:flex;align-items:center;justify-content:center}
   .tc-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .tc-art .ph{font-size:24px;opacity:.55}
-  .tc-src{position:absolute;top:7px;left:7px;z-index:1;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);color:#fff;font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:7px}
+  .tc-art .ph{font-size:22px;opacity:.55}
+  .tc-src{position:absolute;top:7px;left:7px;z-index:1;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);color:#fff;font-size:9px;font-weight:700;padding:3px 7px;border-radius:7px}
   .tc-body{padding:10px 11px 12px}
   .tc-type{display:inline-block;font-size:8.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:5px;color:var(--c);background:color-mix(in srgb,var(--c) 12%,#fff)}
-  .tc h4{font-size:12.5px;font-weight:700;line-height:1.25;margin:7px 0 8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:31px}
-  .tc-reach{font-size:19px;font-weight:900;color:var(--c);font-variant-numeric:tabular-nums}
-  .tc-reach span{font-size:10px;color:var(--g400);font-weight:500;margin-left:2px}
-  .demo-cap{text-align:center;font-size:11px;color:var(--g400);margin-top:4px}
+  .tc h4{font-size:12px;font-weight:700;line-height:1.25;margin:7px 0 8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px}
+  .tc-reach{font-size:18px;font-weight:900;color:var(--c);font-variant-numeric:tabular-nums}
+  .tc-reach span{font-size:9.5px;color:var(--g400);font-weight:500;margin-left:2px}
+  .demo-cap{font-size:11px;color:var(--g400);margin-top:4px}
 
-  /* ── waitlist ── */
-  form{display:flex;gap:8px;flex-direction:column}@media(min-width:440px){form{flex-direction:row}}
-  input[type=email]{flex:1;padding:14px 16px;border-radius:14px;border:1.5px solid #ece3e0;font-size:15px;font-family:inherit;color:var(--g900);outline:none;transition:.15s}
+  /* ── signup (right) ── */
+  .logo{height:28px;margin-bottom:18px}.logo svg{height:100%;width:auto}
+  .right h1{font-size:25px;font-weight:900;letter-spacing:-.02em;line-height:1.12;margin:0 0 8px}
+  .right h1 .hl{color:var(--o600)}
+  .sub{color:var(--g600);font-size:14px;line-height:1.5;margin:0 0 20px}
+  .sub strong{color:var(--g900);font-weight:700}
+  form{display:flex;gap:8px;flex-direction:column}
+  input[type=email]{padding:14px 16px;border-radius:14px;border:1.5px solid #ece3e0;font-size:15px;font-family:inherit;color:var(--g900);outline:none;transition:.15s}
   input[type=email]:focus{border-color:var(--o500);box-shadow:0 0 0 3px rgba(236,103,53,.18)}
-  button{padding:14px 22px;border:0;border-radius:14px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;color:#fff;white-space:nowrap;background:linear-gradient(90deg,var(--o600),var(--o500));box-shadow:0 10px 24px -8px rgba(255,69,0,.6);transition:.15s}
+  button{padding:14px 22px;border:0;border-radius:14px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--o600),var(--o500));box-shadow:0 10px 24px -8px rgba(255,69,0,.6);transition:.15s}
   button:hover{filter:brightness(1.05)}button:disabled{opacity:.65;cursor:default}
-  .note{color:var(--g400);font-size:12.5px;margin:13px 0 0;text-align:center}
-  .ok{display:none;margin-top:6px;padding:24px 18px;border-radius:18px;text-align:center;background:linear-gradient(180deg,#f4fbf6,#fff);border:1px solid #cdeed6}
-  .ok .big{font-size:20px;font-weight:800;color:#15803d;margin:0 0 4px}.ok p{margin:0;color:var(--g600);font-size:14px}
-  footer{margin-top:18px;color:var(--g400);font-size:12.5px;text-align:center}
-  footer a{color:var(--o600);text-decoration:none;font-weight:600}
+  .note{color:var(--g400);font-size:12px;margin:13px 0 0}
+  .ok{display:none;padding:24px 18px;border-radius:18px;text-align:center;background:linear-gradient(180deg,#f4fbf6,#fff);border:1px solid #cdeed6}
+  .ok .big{font-size:19px;font-weight:800;color:#15803d;margin:0 0 4px}.ok p{margin:0;color:var(--g600);font-size:13.5px}
+  .by{margin-top:16px;color:var(--g400);font-size:12px}.by a{color:var(--o600);text-decoration:none;font-weight:600}
 </style>
 </head>
 <body>
 <main class="wrap">
   <div class="card">
-    <div class="logo">
-<svg viewBox="0 0 683 144" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 0C14.3269 0 0 14.3269 0 32V112C0 129.673 14.3269 144 32 144H37.1317L28 115H13.9716L44.6989 21.9091H79.2443L109.972 115H123.765L131.42 137.436C139.067 131.589 144 122.37 144 112V32C144 14.3269 129.673 0 112 0H32ZM41.2443 115H54.7655L64.6589 144H106.132L97 115H82.6989L77.3352 97.1818H46.608L41.2443 115ZM61.608 47.5455L52.3352 78.2727H71.608L62.3352 47.5455H61.608Z" fill="#FF4500"/><path d="M189.136 119L196.045 97.7727H229.636L236.545 119H257.636L225.545 25.9091H200.182L168.045 119H189.136ZM201.045 82.4091L212.5 47.1818H213.227L224.682 82.4091H201.045ZM284.555 120.136C295.827 120.136 301.691 113.636 304.373 107.818H305.191V119H324.282V25.9091H304.964V60.9091H304.373C301.782 55.2273 296.191 48.2727 284.509 48.2727C269.191 48.2727 256.236 60.1818 256.236 84.1818C256.236 107.545 268.645 120.136 284.555 120.136ZM290.691 104.727C281.191 104.727 276.009 96.2727 276.009 84.0909C276.009 72 281.1 63.6818 290.691 63.6818C300.1 63.6818 305.373 71.6364 305.373 84.0909C305.373 96.5455 300.009 104.727 290.691 104.727ZM398.893 49.1818H378.393L363.939 99.1364H363.211L348.711 49.1818H328.257L352.666 119H374.484L398.893 49.1818ZM431.573 120.364C452.755 120.364 465.936 105.864 465.936 84.3636C465.936 62.7273 452.755 48.2727 431.573 48.2727C410.391 48.2727 397.209 62.7273 397.209 84.3636C397.209 105.864 410.391 120.364 431.573 120.364ZM431.664 105.364C421.891 105.364 416.891 96.4091 416.891 84.2273C416.891 72.0455 421.891 63.0455 431.664 63.0455C441.255 63.0455 446.255 72.0455 446.255 84.2273C446.255 96.4091 441.255 105.364 431.664 105.364ZM503.673 120.364C522.264 120.364 533.945 109.455 534.855 93.4091H516.582C515.445 100.864 510.536 105.045 503.9 105.045C494.855 105.045 488.991 97.4545 488.991 84.0909C488.991 70.9091 494.9 63.3636 503.9 63.3636C510.991 63.3636 515.536 68.0455 516.582 75H534.855C534.036 58.8636 521.809 48.2727 503.582 48.2727C482.4 48.2727 469.309 62.9545 469.309 84.3636C469.309 105.591 482.173 120.364 503.673 120.364ZM560.761 120.318C571.08 120.318 577.761 115.818 581.17 109.318H581.716V119H600.08V71.9091C600.08 55.2727 585.989 48.2727 570.443 48.2727C553.716 48.2727 542.716 56.2727 540.034 69L557.943 70.4545C559.261 65.8182 563.398 62.4091 570.352 62.4091C576.943 62.4091 580.716 65.7273 580.716 71.4545V71.7273C580.716 76.2273 575.943 76.8182 563.807 78C549.989 79.2727 537.58 83.9091 537.58 99.5C537.58 113.318 547.443 120.318 560.761 120.318ZM566.307 106.955C560.352 106.955 556.08 104.182 556.08 98.8636C556.08 93.4091 560.58 90.7273 567.398 89.7727C571.625 89.1818 578.534 88.1818 580.852 86.6364V94.0455C580.852 101.364 574.807 106.955 566.307 106.955ZM634.43 120.136C645.702 120.136 651.566 113.636 654.248 107.818H655.066V119H674.157V25.9091H654.839V60.9091H654.248C651.657 55.2273 646.066 48.2727 634.384 48.2727C619.066 48.2727 606.111 60.1818 606.111 84.1818C606.111 107.545 618.52 120.136 634.43 120.136ZM640.566 104.727C631.066 104.727 625.884 96.2727 625.884 84.0909C625.884 72 630.975 63.6818 640.566 63.6818C649.975 63.6818 655.248 71.6364 655.248 84.0909C655.248 96.5455 649.884 104.727 640.566 104.727Z" fill="#271111"/></svg>
-    </div>
-    <h1>See all your dev-advocacy <span class="hl">reach</span> in one place.</h1>
-    <p class="sub">Advocad auto-records your talks, videos, posts &amp; podcasts and measures your reach — here's a peek:</p>
 
-    <div class="demo">
+    <!-- LEFT: the demo -->
+    <div class="left">
+      <div class="eyebrow">Live preview</div>
+      <h2>See your dev-advocacy reach in one dashboard</h2>
       <div class="dash">
         <div class="dash-top">
           <div><div class="dash-eyebrow">Total reach</div><div class="dash-total" id="total">0</div></div>
@@ -102,43 +112,35 @@
           <span><i style="background:#F59E0B"></i>Speaking <b>4.2K</b></span>
         </div>
       </div>
-
       <div class="cards" id="cards">
-        <article class="tc" style="--c:#FF4500">
-          <div class="tc-accent"></div>
-          <div class="tc-art"><span class="ph">▶</span><img src="https://i.ytimg.com/vi/imaTBx4jbwY/maxresdefault.jpg" onerror="this.remove()" alt=""><span class="tc-src">▶ YouTube</span></div>
-          <div class="tc-body"><span class="tc-type">Video</span><h4>6 Apps One Code With Angular</h4><div class="tc-reach">13.2K<span>reach</span></div></div>
-        </article>
-        <article class="tc" style="--c:#8B5CF6">
-          <div class="tc-accent"></div>
-          <div class="tc-art"><span class="ph">🎙</span><img src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode400/3653907/37fda4d81783bccc.png" onerror="this.remove()" alt=""><span class="tc-src">Podcast</span></div>
-          <div class="tc-body"><span class="tc-type">Podcast</span><h4>ngAir 98 — PWAs &amp; Mobile</h4><div class="tc-reach">8.2K<span>reach</span></div></div>
-        </article>
-        <article class="tc" style="--c:#3B82F6">
-          <div class="tc-accent"></div>
-          <div class="tc-art"><span class="ph">✍️</span><img src="https://miro.medium.com/v2/resize:fit:700/1*6D00CvBM1XxtSnKSpPXcuQ.jpeg" onerror="this.remove()" alt=""><span class="tc-src">Medium</span></div>
-          <div class="tc-body"><span class="tc-type">Blog</span><h4>The Power Of Collaboration</h4><div class="tc-reach">6.7K<span>reach</span></div></div>
-        </article>
-        <article class="tc" style="--c:#F59E0B">
-          <div class="tc-accent"></div>
-          <div class="tc-art"><span class="ph">🖥</span><img src="https://media.slid.es/thumbnails/9f50c75ed76b0d9115a04f1d5bd3d66c/thumb.jpg" onerror="this.remove()" alt=""><span class="tc-src">Slides</span></div>
-          <div class="tc-body"><span class="tc-type">Speaking</span><h4>6 Apps One Code</h4><div class="tc-reach">4.2K<span>reach</span></div></div>
-        </article>
+        <article class="tc" style="--c:#FF4500"><div class="tc-accent"></div><div class="tc-art"><span class="ph">▶</span><img src="https://i.ytimg.com/vi/imaTBx4jbwY/maxresdefault.jpg" onerror="this.remove()" alt=""><span class="tc-src">▶ YouTube</span></div><div class="tc-body"><span class="tc-type">Video</span><h4>6 Apps One Code With Angular</h4><div class="tc-reach">13.2K<span>reach</span></div></div></article>
+        <article class="tc" style="--c:#8B5CF6"><div class="tc-accent"></div><div class="tc-art"><span class="ph">🎙</span><img src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode400/3653907/37fda4d81783bccc.png" onerror="this.remove()" alt=""><span class="tc-src">Podcast</span></div><div class="tc-body"><span class="tc-type">Podcast</span><h4>ngAir 98 — PWAs &amp; Mobile</h4><div class="tc-reach">8.2K<span>reach</span></div></div></article>
+        <article class="tc" style="--c:#3B82F6"><div class="tc-accent"></div><div class="tc-art"><span class="ph">✍️</span><img src="https://miro.medium.com/v2/resize:fit:700/1*6D00CvBM1XxtSnKSpPXcuQ.jpeg" onerror="this.remove()" alt=""><span class="tc-src">Medium</span></div><div class="tc-body"><span class="tc-type">Blog</span><h4>The Power Of Collaboration</h4><div class="tc-reach">6.7K<span>reach</span></div></div></article>
+        <article class="tc" style="--c:#F59E0B"><div class="tc-accent"></div><div class="tc-art"><span class="ph">🖥</span><img src="https://media.slid.es/thumbnails/9f50c75ed76b0d9115a04f1d5bd3d66c/thumb.jpg" onerror="this.remove()" alt=""><span class="tc-src">Slides</span></div><div class="tc-body"><span class="tc-type">Speaking</span><h4>6 Apps One Code</h4><div class="tc-reach">4.2K<span>reach</span></div></div></article>
       </div>
-      <div class="demo-cap">A sample of one dev advocate's reach — yours builds up as you add links.</div>
+      <div class="demo-cap">A real dev advocate's reach — yours builds up automatically as you add links.</div>
     </div>
 
-    <form id="f" novalidate>
-      <input type="email" name="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email address">
-      <button type="submit">Join the waitlist</button>
-    </form>
-    <p class="note">Early access + a 14-day Premium trial when we launch. No spam.</p>
-    <div class="ok" id="ok"><div class="big">🎉 You're on the list!</div><p>Thanks — we'll email you the moment Advocad opens up.</p></div>
+    <!-- RIGHT: the signup -->
+    <div class="right">
+      <div class="logo">
+<svg viewBox="0 0 683 144" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 0C14.3269 0 0 14.3269 0 32V112C0 129.673 14.3269 144 32 144H37.1317L28 115H13.9716L44.6989 21.9091H79.2443L109.972 115H123.765L131.42 137.436C139.067 131.589 144 122.37 144 112V32C144 14.3269 129.673 0 112 0H32ZM41.2443 115H54.7655L64.6589 144H106.132L97 115H82.6989L77.3352 97.1818H46.608L41.2443 115ZM61.608 47.5455L52.3352 78.2727H71.608L62.3352 47.5455H61.608Z" fill="#FF4500"/><path d="M189.136 119L196.045 97.7727H229.636L236.545 119H257.636L225.545 25.9091H200.182L168.045 119H189.136ZM201.045 82.4091L212.5 47.1818H213.227L224.682 82.4091H201.045ZM284.555 120.136C295.827 120.136 301.691 113.636 304.373 107.818H305.191V119H324.282V25.9091H304.964V60.9091H304.373C301.782 55.2273 296.191 48.2727 284.509 48.2727C269.191 48.2727 256.236 60.1818 256.236 84.1818C256.236 107.545 268.645 120.136 284.555 120.136ZM290.691 104.727C281.191 104.727 276.009 96.2727 276.009 84.0909C276.009 72 281.1 63.6818 290.691 63.6818C300.1 63.6818 305.373 71.6364 305.373 84.0909C305.373 96.5455 300.009 104.727 290.691 104.727ZM398.893 49.1818H378.393L363.939 99.1364H363.211L348.711 49.1818H328.257L352.666 119H374.484L398.893 49.1818ZM431.573 120.364C452.755 120.364 465.936 105.864 465.936 84.3636C465.936 62.7273 452.755 48.2727 431.573 48.2727C410.391 48.2727 397.209 62.7273 397.209 84.3636C397.209 105.864 410.391 120.364 431.573 120.364ZM431.664 105.364C421.891 105.364 416.891 96.4091 416.891 84.2273C416.891 72.0455 421.891 63.0455 431.664 63.0455C441.255 63.0455 446.255 72.0455 446.255 84.2273C446.255 96.4091 441.255 105.364 431.664 105.364ZM503.673 120.364C522.264 120.364 533.945 109.455 534.855 93.4091H516.582C515.445 100.864 510.536 105.045 503.9 105.045C494.855 105.045 488.991 97.4545 488.991 84.0909C488.991 70.9091 494.9 63.3636 503.9 63.3636C510.991 63.3636 515.536 68.0455 516.582 75H534.855C534.036 58.8636 521.809 48.2727 503.582 48.2727C482.4 48.2727 469.309 62.9545 469.309 84.3636C469.309 105.591 482.173 120.364 503.673 120.364ZM560.761 120.318C571.08 120.318 577.761 115.818 581.17 109.318H581.716V119H600.08V71.9091C600.08 55.2727 585.989 48.2727 570.443 48.2727C553.716 48.2727 542.716 56.2727 540.034 69L557.943 70.4545C559.261 65.8182 563.398 62.4091 570.352 62.4091C576.943 62.4091 580.716 65.7273 580.716 71.4545V71.7273C580.716 76.2273 575.943 76.8182 563.807 78C549.989 79.2727 537.58 83.9091 537.58 99.5C537.58 113.318 547.443 120.318 560.761 120.318ZM566.307 106.955C560.352 106.955 556.08 104.182 556.08 98.8636C556.08 93.4091 560.58 90.7273 567.398 89.7727C571.625 89.1818 578.534 88.1818 580.852 86.6364V94.0455C580.852 101.364 574.807 106.955 566.307 106.955ZM634.43 120.136C645.702 120.136 651.566 113.636 654.248 107.818H655.066V119H674.157V25.9091H654.839V60.9091H654.248C651.657 55.2273 646.066 48.2727 634.384 48.2727C619.066 48.2727 606.111 60.1818 606.111 84.1818C606.111 107.545 618.52 120.136 634.43 120.136ZM640.566 104.727C631.066 104.727 625.884 96.2727 625.884 84.0909C625.884 72 630.975 63.6818 640.566 63.6818C649.975 63.6818 655.248 71.6364 655.248 84.0909C655.248 96.5455 649.884 104.727 640.566 104.727Z" fill="#271111"/></svg>
+      </div>
+      <div class="eyebrow">Early access</div>
+      <h1>Join the <span class="hl">waitlist</span>.</h1>
+      <p class="sub">Advocad auto-records your talks, videos, posts &amp; podcasts and measures your <strong>reach</strong>. Be first in when we open up.</p>
+      <form id="f" novalidate>
+        <input type="email" name="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email address">
+        <button type="submit">Join the waitlist</button>
+      </form>
+      <p class="note">Early access + a 14-day Premium trial. No spam.</p>
+      <div class="ok" id="ok"><div class="big">🎉 You're on the list!</div><p>Thanks — we'll email you the moment Advocad opens up.</p></div>
+      <div class="by">Works with YouTube · X · Medium · dev.to · TikTok · Meetup · podcasts · built by <a href="https://x.com/saniyusuf">@saniyusuf</a></div>
+    </div>
+
   </div>
-  <footer>© Advocad · built by <a href="https://x.com/saniyusuf">@saniyusuf</a></footer>
 </main>
 <script>
-  // animate the showcase
   window.addEventListener('load', () => {
     const total = document.getElementById('total'), target = 32361;
     const fmt = n => n >= 1000 ? (n/1000).toFixed(1).replace(/\.0$/,'')+'K' : n;
@@ -147,7 +149,6 @@
     setTimeout(() => document.querySelectorAll('#bar span').forEach(s => s.style.width = s.dataset.w), 150);
     document.querySelectorAll('#cards .tc').forEach((c,i) => setTimeout(() => c.classList.add('in'), 200 + i*140));
   });
-  // waitlist submit
   const f = document.getElementById('f'), ok = document.getElementById('ok');
   f.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -160,7 +161,7 @@
         body: JSON.stringify({ email, _subject:'New Advocad waitlist signup', _template:'table' })
       });
       if(!r.ok) throw new Error();
-      f.style.display='none'; document.querySelector('.note').style.display='none'; ok.style.display='block';
+      f.style.display='none'; document.querySelector('.right .note').style.display='none'; ok.style.display='block';
     } catch { btn.disabled=false; btn.textContent='Join the waitlist'; alert('Something went wrong — please try again.'); }
   });
 </script>
