@@ -40,43 +40,45 @@
   .legend i{width:8px;height:8px;border-radius:99px;display:inline-block}.legend b{color:var(--g400);font-weight:500}
 
   .cards{display:flex;gap:11px;overflow-x:auto;padding:14px 2px 4px;scrollbar-width:none}.cards::-webkit-scrollbar{display:none}
-  .tc{flex:0 0 152px;border-radius:16px;background:#fff;box-shadow:0 12px 26px -16px rgba(39,17,17,.5),0 0 0 1px rgba(39,17,17,.05);overflow:hidden;cursor:pointer;animation:pop .45s cubic-bezier(.34,1.56,.64,1) both;transition:transform .2s,box-shadow .2s}
+  .tc{position:relative;flex:0 0 152px;border-radius:16px;background:#fff;box-shadow:0 12px 26px -16px rgba(39,17,17,.5),0 0 0 1px rgba(39,17,17,.05);overflow:hidden;cursor:pointer;animation:pop .45s cubic-bezier(.34,1.56,.64,1) both;transition:transform .2s,box-shadow .2s}
   .tc:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 34px -16px rgba(39,17,17,.6),0 0 0 1px rgba(255,69,0,.25)}
   @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.94)}to{opacity:1;transform:none}}
   .tc-accent{height:5px;background:var(--c)}
   .tc-art{position:relative;height:80px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 26%,#fff),color-mix(in srgb,var(--c) 8%,#fff));display:flex;align-items:center;justify-content:center}
   .tc-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.tc-art .ph{font-size:23px;opacity:.6}
   .tc-src{position:absolute;top:7px;left:7px;z-index:1;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);color:#fff;font-size:9px;font-weight:700;padding:3px 7px;border-radius:7px}
+  /* hover → "View more" affordance (click to open the preview) */
+  .tc-more{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.42);opacity:0;transition:opacity .2s}
+  .tc:hover .tc-more{opacity:1}
+  .tc-more b{background:#fff;color:var(--g900);font-size:10.5px;font-weight:800;padding:6px 12px;border-radius:99px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
   .tc-body{padding:10px 11px 12px}
   .tc-type{display:inline-block;font-size:8.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:5px;color:var(--c);background:color-mix(in srgb,var(--c) 12%,#fff)}
   .tc h4{font-size:12px;font-weight:700;line-height:1.25;margin:7px 0 8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px}
   .tc-reach{font-size:18px;font-weight:900;color:var(--c);font-variant-numeric:tabular-nums}.tc-reach span{font-size:9.5px;color:var(--g400);font-weight:500;margin-left:2px}
   .demo-cap{font-size:11.5px;color:var(--g400);margin-top:9px}.demo-cap b{color:var(--o600)}
 
-  /* ── per-activity detail overlay (hover) ── */
-  .detail{position:absolute;inset:0;z-index:20;background:rgba(255,255,255,.97);backdrop-filter:blur(6px);
-    display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .18s;border-radius:30px}
-  @media(min-width:900px){.detail{border-radius:0}}
-  .detail.show{opacity:1;pointer-events:auto}
-  .d-banner{position:relative;height:118px;background-size:cover;background-position:center;flex:0 0 auto}
-  .d-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45))}
-  .d-srcbig{position:absolute;left:18px;bottom:12px;z-index:1;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;gap:7px;text-shadow:0 1px 4px rgba(0,0,0,.5)}
-  .d-close{position:absolute;top:12px;right:14px;z-index:2;width:30px;height:30px;border:0;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;font-size:18px;line-height:1;cursor:pointer}
-  .d-content{padding:18px 22px 20px;overflow:auto}
-  .d-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}
-  .d-chip{font-size:9.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
-  .d-chip.type{color:var(--dc);background:color-mix(in srgb,var(--dc) 13%,#fff)}
-  .d-chip.date{color:var(--g600);background:#f3ece9}
-  .d-content h3{font-size:18px;font-weight:900;letter-spacing:-.01em;margin:2px 0 7px;line-height:1.2}
-  .d-desc{font-size:13px;color:var(--g600);line-height:1.5;margin:0 0 14px}
-  .d-metrics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}
-  .d-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--g700);background:#faf4f1;border:1px solid #f0e6e1;padding:7px 11px;border-radius:11px}
-  .d-pill b{font-weight:800;color:var(--g900);font-variant-numeric:tabular-nums}
-  .d-pill .pk{text-transform:capitalize}
-  .d-pill .prov{font-size:12px;cursor:default}
-  .d-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:13px;border-top:1px solid #f0e6e1;flex-wrap:wrap}
-  .d-reach{font-size:13px;color:var(--g600)}.d-reach b{font-size:22px;font-weight:900;color:var(--dc);margin-left:6px;vertical-align:-2px;font-variant-numeric:tabular-nums}
-  .d-via{font-size:10.5px;color:var(--g400);text-align:right;line-height:1.5}
+  /* ── centered media-preview modal (opens on "View more") ── */
+  .modal-back{position:absolute;inset:0;z-index:30;background:rgba(39,17,17,.42);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
+  .modal-back.show{opacity:1;pointer-events:auto}
+  .modal{position:relative;width:100%;max-width:360px;max-height:100%;overflow:auto;background:#fff;border-radius:20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.55);transform:scale(.9);transition:transform .22s cubic-bezier(.34,1.4,.64,1);--dc:#FF4500}
+  .modal-back.show .modal{transform:none}
+  .m-close{position:absolute;top:10px;right:12px;z-index:3;width:30px;height:30px;border:0;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;font-size:18px;line-height:1;cursor:pointer}
+  .m-banner{position:relative;height:150px;background:#eee center/cover no-repeat;border-radius:20px 20px 0 0}
+  .m-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.5));border-radius:20px 20px 0 0}
+  .m-src{position:absolute;left:16px;bottom:12px;z-index:1;color:#fff;font-size:12px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+  .m-body{padding:16px 18px 18px}
+  .m-chips{display:flex;gap:7px;margin-bottom:9px}
+  .m-chips span{font-size:9.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+  .m-type{color:var(--dc);background:color-mix(in srgb,var(--dc) 13%,#fff)}
+  .m-date{color:var(--g600);background:#f3ece9}
+  .m-body h3{font-size:17px;font-weight:900;letter-spacing:-.01em;margin:2px 0 7px;line-height:1.2}
+  .m-desc{font-size:12.5px;color:var(--g600);line-height:1.5;margin:0 0 13px}
+  .m-metrics{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+  .m-pill{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--g700);background:#faf4f1;border:1px solid #f0e6e1;padding:6px 10px;border-radius:10px}
+  .m-pill b{font-weight:800;color:var(--g900);font-variant-numeric:tabular-nums}.m-pill .pk{text-transform:capitalize}
+  .m-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid #f0e6e1}
+  .m-reach{font-size:12.5px;color:var(--g600)}.m-reach b{font-size:21px;font-weight:900;color:var(--dc);margin-left:5px;vertical-align:-2px;font-variant-numeric:tabular-nums}
+  .m-via{font-size:10px;color:var(--g400);text-align:right;line-height:1.5}
 
   .logo{height:28px;margin-bottom:18px}.logo svg{height:100%;width:auto}
   .right h1{font-size:40px;font-weight:900;letter-spacing:-.024em;line-height:1.05;margin:2px 0 12px}.right h1 .hl{color:var(--o600)}
@@ -101,19 +103,19 @@
     <h2>See your dev-advocacy reach in one dashboard</h2>
     <div id="dash"></div>
     <div id="cards" class="cards"></div>
-    <div class="demo-cap">👆 <b>Hover any activity</b> for the full breakdown — every number, measured.</div>
+    <div class="demo-cap">👆 <b>Hover an activity</b> and hit <b>View more</b> for the full breakdown — every number, measured.</div>
 
-    <!-- detail overlay (populated on hover) -->
-    <div class="detail" id="detail" style="--dc:#FF4500">
-      <div class="d-banner" id="dbanner"><button class="d-close" id="dclose" aria-label="Close">×</button><span class="d-srcbig" id="dsrc"></span></div>
-      <div class="d-content">
-        <div class="d-chips"><span class="d-chip type" id="dtype"></span><span class="d-chip date" id="ddate"></span></div>
-        <h3 id="dtitle"></h3>
-        <p class="d-desc" id="ddesc"></p>
-        <div class="d-metrics" id="dmetrics"></div>
-        <div class="d-foot">
-          <div class="d-reach">Total reach <b id="dreach"></b></div>
-          <div class="d-via" id="dvia"></div>
+    <!-- centered media-preview modal -->
+    <div class="modal-back" id="mback">
+      <div class="modal" id="modal" style="--dc:#FF4500">
+        <button class="m-close" id="mclose" aria-label="Close">×</button>
+        <div class="m-banner" id="mbanner"><span class="m-src" id="msrc"></span></div>
+        <div class="m-body">
+          <div class="m-chips"><span class="m-type" id="mtype"></span><span class="m-date" id="mdate"></span></div>
+          <h3 id="mtitle"></h3>
+          <p class="m-desc" id="mdesc"></p>
+          <div class="m-metrics" id="mmetrics"></div>
+          <div class="m-foot"><div class="m-reach">Total reach <b id="mreach"></b></div><div class="m-via" id="mvia"></div></div>
         </div>
       </div>
     </div>
@@ -166,7 +168,6 @@
   const esc = s => (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const total = CARDS.reduce((s,c)=>s+c.reach,0);
 
-  // dashboard
   (function renderDash(){
     let bar='',legend='';
     CARDS.forEach(c=>{ const pct=(c.reach/total*100);
@@ -179,53 +180,46 @@
        </div><div class="bar" id="bar">${bar}</div><div class="legend">${legend}</div></div>`;
   })();
 
-  // cards
   document.getElementById('cards').innerHTML = CARDS.map((c,i)=>`
     <article class="tc" data-i="${i}" style="--c:${c.color}">
       <div class="tc-accent"></div>
-      <div class="tc-art"><span class="ph">${c.ph}</span>${c.img?`<img src="${c.img}" onerror="this.remove()" alt="">`:''}<span class="tc-src">${esc(c.label)}</span></div>
+      <div class="tc-art"><span class="ph">${c.ph}</span>${c.img?`<img src="${c.img}" onerror="this.remove()" alt="">`:''}<span class="tc-src">${esc(c.label)}</span><div class="tc-more"><b>View more →</b></div></div>
       <div class="tc-body"><span class="tc-type">${esc(c.cat)}</span><h4>${esc(c.title)}</h4><div class="tc-reach">${fmt(c.reach)}<span>reach</span></div></div>
     </article>`).join('');
 
-  // ── hover detail ──
-  const detail=document.getElementById('detail');
+  // ── media-preview modal (opens on click / View more) ──
+  const back=document.getElementById('mback');
   function openDetail(i){
     const c=CARDS[i];
-    detail.style.setProperty('--dc',c.color);
-    document.getElementById('dbanner').style.backgroundImage=c.img?`url("${c.img}")`:'none';
-    document.getElementById('dbanner').style.background=c.img?`center/cover no-repeat url("${c.img}")`:`linear-gradient(135deg,${c.color},#fff)`;
-    document.getElementById('dsrc').textContent=c.label;
-    document.getElementById('dtype').textContent=c.cat;
-    document.getElementById('ddate').textContent=c.date;
-    document.getElementById('dtitle').textContent=c.title;
-    document.getElementById('ddesc').textContent=c.desc;
-    document.getElementById('dmetrics').innerHTML=c.metrics.map(m=>
-      `<span class="d-pill"><span class="pk">${esc(m.k)}</span> <b>${m.v.toLocaleString()}</b> <span class="prov" title="${m.m?'Manually entered':'Measured by the crawler'}">${m.m?'✎':'⚡'}</span></span>`).join('');
-    document.getElementById('dreach').textContent=fmt(c.reach);
+    document.getElementById('modal').style.setProperty('--dc',c.color);
+    document.getElementById('mbanner').style.backgroundImage=c.img?`url("${c.img}")`:'none';
+    document.getElementById('msrc').textContent=c.label;
+    document.getElementById('mtype').textContent=c.cat;
+    document.getElementById('mdate').textContent=c.date;
+    document.getElementById('mtitle').textContent=c.title;
+    document.getElementById('mdesc').textContent=c.desc;
+    document.getElementById('mmetrics').innerHTML=c.metrics.map(m=>
+      `<span class="m-pill"><span class="pk">${esc(m.k)}</span> <b>${m.v.toLocaleString()}</b> <span class="prov" title="${m.m?'Manually entered':'Measured by the crawler'}">${m.m?'✎':'⚡'}</span></span>`).join('');
+    document.getElementById('mreach').textContent=fmt(c.reach);
     const manualCount=c.metrics.filter(m=>m.m).length;
-    document.getElementById('dvia').innerHTML = manualCount===0
+    document.getElementById('mvia').innerHTML = manualCount===0
       ? '⚡ Measured automatically<br>by Advocad'
-      : manualCount===c.metrics.length
-        ? '✎ Entered manually'
-        : '⚡ Some measured<br>✎ some entered manually';
-    detail.classList.add('show');
+      : manualCount===c.metrics.length ? '✎ Entered manually'
+      : '⚡ Some measured<br>✎ some entered manually';
+    back.classList.add('show');
   }
-  function closeDetail(){ detail.classList.remove('show'); }
-  document.querySelectorAll('#cards .tc').forEach(el=>{
-    el.addEventListener('mouseenter',()=>openDetail(+el.dataset.i));
-    el.addEventListener('click',()=>openDetail(+el.dataset.i));
-  });
-  detail.addEventListener('mouseleave',closeDetail);
-  document.getElementById('dclose').addEventListener('click',closeDetail);
+  function closeDetail(){ back.classList.remove('show'); }
+  document.querySelectorAll('#cards .tc').forEach(el=> el.addEventListener('click',()=>openDetail(+el.dataset.i)));
+  back.addEventListener('click', e=>{ if(e.target===back) closeDetail(); });
+  document.getElementById('mclose').addEventListener('click',closeDetail);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDetail(); });
 
-  // load animation
   window.addEventListener('load',()=>{
     const el=document.getElementById('total'),t0=performance.now();
     (function tick(now){ const t=Math.min(1,(now-t0)/1100); el.textContent=fmt(Math.round(total*(1-Math.pow(1-t,3)))); if(t<1)requestAnimationFrame(tick); })(t0);
     setTimeout(()=>document.querySelectorAll('#bar span').forEach(s=>s.style.width=s.dataset.w),150);
   });
 
-  // waitlist submit (Formspree = your bank)
   const f=document.getElementById('f'), ok=document.getElementById('ok');
   f.addEventListener('submit', async e=>{
     e.preventDefault();
